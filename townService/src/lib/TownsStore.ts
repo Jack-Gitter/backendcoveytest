@@ -92,7 +92,7 @@ export default class TownsStore {
     const newTown = new Town(friendlyName, isPubliclyListed, townID, this._emitterFactory(townID));
     const data = JSON.parse(await fs.readFile(mapFile, 'utf-8'));
     const map = ITiledMap.parse(data);
-    newTown.initializeFromMap(map);
+    await newTown.initializeFromMap(map);
     this._towns.push(newTown);
     return newTown;
   }
